@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:user_profile_shared_preferences_example/appOpening/login_screens/sign_in.dart';
 
 
 
@@ -94,7 +95,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               FlatButton(
                 child: Text('Sign In',
                   style: TextStyle(color: Colors.white),),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context)=>Sign_in()));
+                },
               )
             ],
           ),
