@@ -29,15 +29,29 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-
-  late User user;
+  var nameController=TextEditingController();
+  var ageController=TextEditingController();
+  var aboutController=TextEditingController();
+  var phoneController=TextEditingController();
+  var emailController=TextEditingController();
 
   @override
   void initState() {
     super.initState();
-
     user = UserPreferences.getUser();
+
   }
+
+  @override
+  // void dispose() {
+  //   controller.dispose();
+  //
+  //   super.dispose();
+  // }
+
+  late User user;
+
+
   final allDiseases = Diseases(title: 'All Diseases');
 
   final diseases = [
@@ -59,7 +73,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) =>BlocConsumer<AppCubit,AppStates>(
     listener: (context,state){},
     builder: (context,state){
-
+      nameController.text= AppCubit.get(context).userModel!.fullName! ;
+       ageController.text= AppCubit.get(context).userModel!.age!;
+      phoneController.text= AppCubit.get(context).userModel!.phoneNumber!;
+      emailController.text= AppCubit.get(context).userModel!.email!;
+       aboutController.text= AppCubit.get(context).userModel!.bio!;
       return ThemeSwitchingArea(
 
       child: Scaffold(
@@ -98,12 +116,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   validator: (value){
                     if (value!.isEmpty)
                     {
-                      return('Email is empty');
+                      return('Name is empty');
                     }
                   },
                   style: TextStyle(color: Colors.white),
                   cursorColor: KMainColor,
                   cursorHeight: 25,
+                    controller: nameController,
                   //text: AppCubit.get(context).userModel!.fullName!,
                   onChanged: (name) => user = user.copy(name: name),
                   decoration: InputDecoration(
@@ -130,12 +149,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   validator: (value){
                     if (value!.isEmpty)
                     {
-                      return('Email is empty');
+                      return('Age is empty');
                     }
                   },
                   style: TextStyle(color: Colors.white),
                   cursorColor: KMainColor,
                   cursorHeight: 25,
+                  controller: ageController,
                   //text:  AppCubit.get(context).userModel!.age!,
                   onChanged: (age) => user = user.copy(age: age),
                   decoration: InputDecoration(
@@ -162,13 +182,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   validator: (value){
                     if (value!.isEmpty)
                     {
-                      return('Email is empty');
+                      return('Phone is empty');
                     }
                   },
                   style: TextStyle(color: Colors.white),
                   cursorColor: KMainColor,
                   cursorHeight: 25,
-
+                  controller: phoneController,
                   //text:  AppCubit.get(context).userModel!.phoneNumber!,
                   onChanged: (phoneNumber) => user = user.copy(phoneNumber: phoneNumber),
                   decoration: InputDecoration(
@@ -202,6 +222,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   cursorColor: KMainColor,
                   cursorHeight: 25,
                   //text:  AppCubit.get(context).userModel!.email!,
+                  controller: emailController,
                   onChanged: (email) => user = user.copy(email: email),
                   decoration: InputDecoration(
 
@@ -226,16 +247,18 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 const SizedBox(height: 24),
                 TextFormField(
                   validator: (value){
+
                     if (value!.isEmpty)
                     {
-                      return('Email is empty');
+
+                      return('About is empty');
                     }
                   },
                   style: TextStyle(color: Colors.white),
                   cursorColor: KMainColor,
                   cursorHeight: 25,
+                  controller: aboutController,
 
-                  //text: AppCubit.get(context).userModel!.bio!,
                   maxLines: 5,
                   onChanged: (about) => user = user.copy(about: about),
                   decoration: InputDecoration(

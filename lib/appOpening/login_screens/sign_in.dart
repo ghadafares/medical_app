@@ -25,6 +25,7 @@ class _sign_inState extends State<Sign_in> {
       FirebaseAuth.instance.signInWithEmailAndPassword
         (email: email, password: password).then((value) {
         print('created new account');
+        //print(value.data.uid);
       } );
 
       Navigator.push(
