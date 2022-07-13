@@ -154,7 +154,9 @@ class _sign_inState extends State<Sign_in> {
                               color: KMainColor,
                             ),
                             borderRadius: BorderRadius.circular(20),
-                          )),)
+                          )
+                      ),
+                    )
                 ),
                 Align(alignment: Alignment.centerRight,
                   child: Padding(

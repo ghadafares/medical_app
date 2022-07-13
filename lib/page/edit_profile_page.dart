@@ -7,13 +7,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:user_profile_shared_preferences_example/Bloc/AppCubit/cubit.dart';
 import 'package:user_profile_shared_preferences_example/Bloc/AppStates/states.dart';
+import 'package:user_profile_shared_preferences_example/constants/colors.dart';
 import 'package:user_profile_shared_preferences_example/model/User_Model/user_model.dart';
 import 'package:user_profile_shared_preferences_example/model/user.dart';
 import 'package:user_profile_shared_preferences_example/utils/user_preferences.dart';
 import 'package:user_profile_shared_preferences_example/widget/appbar_widget.dart';
 import 'package:user_profile_shared_preferences_example/widget/button_widget.dart';
 import 'package:user_profile_shared_preferences_example/widget/profile_widget.dart';
-import 'package:user_profile_shared_preferences_example/widget/textfield_widget.dart';
+
 import 'package:path/path.dart';
 import 'package:user_profile_shared_preferences_example/model/notification_setting.dart';
 
@@ -62,11 +63,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
       return ThemeSwitchingArea(
 
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xFF100F1E),
         body: Builder(
+
           builder: (context) => Scaffold(
             appBar: buildAppBar(context),
+            backgroundColor: backgrouColor,
             body: ListView(
+
               padding: EdgeInsets.symmetric(horizontal: 32),
               physics: BouncingScrollPhysics(),
               children: [
@@ -90,35 +94,168 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   },
                 ),
                 const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: 'Full Name',
-                  text: AppCubit.get(context).userModel!.fullName!,
+                TextFormField(
+                  validator: (value){
+                    if (value!.isEmpty)
+                    {
+                      return('Email is empty');
+                    }
+                  },
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: KMainColor,
+                  cursorHeight: 25,
+                  //text: AppCubit.get(context).userModel!.fullName!,
                   onChanged: (name) => user = user.copy(name: name),
+                  decoration: InputDecoration(
+                      //prefixIcon: Icon(Icons.email_outlined,
+                        //color: KMainColor,),
+                      labelText: 'Full Name',
+                      labelStyle: TextStyle(
+                          color: KMainColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,),
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                  ),
                 ),
                 const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: 'Age',
-                  text:  AppCubit.get(context).userModel!.age!,
+                TextFormField(
+                  validator: (value){
+                    if (value!.isEmpty)
+                    {
+                      return('Email is empty');
+                    }
+                  },
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: KMainColor,
+                  cursorHeight: 25,
+                  //text:  AppCubit.get(context).userModel!.age!,
                   onChanged: (age) => user = user.copy(age: age),
+                  decoration: InputDecoration(
+                      //prefixIcon: Icon(Icons.email_outlined,
+                        //color: KMainColor,),
+                      labelText: 'Age',
+                      labelStyle: TextStyle(
+                          color: KMainColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,),
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                  ),
                 ),
                 const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: 'Phone Number',
-                  text:  AppCubit.get(context).userModel!.phoneNumber!,
+                TextFormField(
+                  validator: (value){
+                    if (value!.isEmpty)
+                    {
+                      return('Email is empty');
+                    }
+                  },
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: KMainColor,
+                  cursorHeight: 25,
+
+                  //text:  AppCubit.get(context).userModel!.phoneNumber!,
                   onChanged: (phoneNumber) => user = user.copy(phoneNumber: phoneNumber),
+                  decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone,
+                        color: KMainColor,),
+                      labelText: 'Phone Number',
+                      labelStyle: TextStyle(
+                          color: KMainColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,),
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                  ),
                 ),
                 const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: 'Email',
-                  text:  AppCubit.get(context).userModel!.email!,
+                TextFormField(
+                  validator: (value){
+                    if (value!.isEmpty)
+                    {
+                      return('Email is empty');
+                    }
+                  },
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: KMainColor,
+                  cursorHeight: 25,
+                  //text:  AppCubit.get(context).userModel!.email!,
                   onChanged: (email) => user = user.copy(email: email),
+                  decoration: InputDecoration(
+
+                      prefixIcon: Icon(Icons.email_outlined,
+                        color: KMainColor,),
+                      labelText: 'Email adress',
+                      labelStyle: TextStyle(
+                          color: KMainColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,),
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                  ),
                 ),
                 const SizedBox(height: 24),
-                TextFieldWidget(
-                  label: 'About',
-                  text:  AppCubit.get(context).userModel!.bio!,
+                TextFormField(
+                  validator: (value){
+                    if (value!.isEmpty)
+                    {
+                      return('Email is empty');
+                    }
+                  },
+                  style: TextStyle(color: Colors.white),
+                  cursorColor: KMainColor,
+                  cursorHeight: 25,
+
+                  //text: AppCubit.get(context).userModel!.bio!,
                   maxLines: 5,
                   onChanged: (about) => user = user.copy(about: about),
+                  decoration: InputDecoration(
+                      //prefixIcon: Icon(Icons.email_outlined,
+                        //color: KMainColor,),
+                      labelText: 'About',
+                      labelStyle: TextStyle(
+                          color: KMainColor),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: KMainColor,),
+                        borderRadius: BorderRadius.circular(20),
+                      )
+                  ),
                 ),
                 const SizedBox(height: 24),
                 buildToggleCheckbox(allDiseases),
@@ -127,6 +264,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   height: MediaQuery.of(context).size.height*.5,
 
                   child: ListView.separated(
+
                     itemCount: diseases.length,
                     itemBuilder: (context,index){
                       // print(diseases[index].value);
@@ -137,8 +275,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       return buildSingleCheckbox(diseases[index]);
                     },
                     separatorBuilder: (context,index){
-                      return SizedBox(height: 10,);
+                      return
+                        SizedBox(height: 10,);
                     },
+
                   ),
                 ),
                  SizedBox(height: 10,),
@@ -182,6 +322,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
                   },
                 ),
+                SizedBox(height: 10,),
               ],
             ),
           ),
@@ -225,16 +366,27 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget buildCheckbox({
     required Diseases disease,
     required VoidCallback onClicked,
+
   }) =>
       ListTile(
         onTap: onClicked,
         leading: Checkbox(
+          checkColor: Color(0xFFa50f59),
+          activeColor: Color(0xFFa50f59),
+          hoverColor: Colors.white24,
+          side: BorderSide(
+            color: Color(0xFFa50f59), //your desire colour here
+            width: 1.5,
+          ),
+
           value: disease.value,
           onChanged: (value) => onClicked(),
         ),
         title: Text(
           disease.title,
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 15,
+
+              fontWeight: FontWeight.bold),
         ),
       );
 }
