@@ -22,3 +22,7 @@ class  UploadDiseasesErrorState extends AppStates{}
 
 class  GetDiseasesSuccessState extends AppStates{}
 class  GetDiseasesErrorState extends AppStates{}
+
+
+class  GetInteractionSuccessState extends AppStates{}
+class  GetInteractionErrorState extends AppStates{}

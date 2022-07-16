@@ -9,9 +9,12 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:user_profile_shared_preferences_example/Bloc/AppStates/states.dart';
+import 'package:user_profile_shared_preferences_example/dio_helper/dio_helper.dart';
 //import 'package:user_profile_shared_preferences_example/page/edit_profile_page.dart';
+import 'dart:convert' as convert ;
 
 import '../../model/User_Model/user_model.dart';
+
 
 class AppCubit extends Cubit<AppStates>{
 
@@ -21,6 +24,29 @@ class AppCubit extends Cubit<AppStates>{
   static AppCubit get(context) => BlocProvider.of(context);
   UserModel ?userModel;
 
+
+   Future <void> getInteraction({
+    required String diseaseName
+   })async{
+
+    DioHelper.postDate(url: '',
+        data: {
+          "path": "$diseaseName"
+        }).then((value) {
+      print('///////////////////////////Result form machine ///////////////////////////////////////////////////////');
+      print(value.data);
+      print('///////////////////////////Result form machine ///////////////////////////////////////////////////////');
+      emit(GetInteractionSuccessState());
+
+    }).catchError((error){
+         print('/////////////////////////////////');
+         print(error.toString());
+
+         emit(GetInteractionErrorState());
+    });
+
+
+  }
 
   void uploadProfile({
 

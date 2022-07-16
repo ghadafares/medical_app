@@ -173,7 +173,7 @@ Widget buildStack(context, ddata data1) => GestureDetector(
             ),
             Text(
               '${data1.text}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
           ],

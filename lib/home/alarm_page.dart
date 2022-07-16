@@ -128,9 +128,13 @@ class _AlarmState extends State<Alarm> {
                 SizedBox(
                   height: deviceHeight * 0.01,
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0),
-                  child: Calendar(chooseDay,_daysList),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Calendar(chooseDay,_daysList),
+                  ),
                 ),
                 SizedBox(height: deviceHeight * 0.03),
                 dailyPills.isEmpty

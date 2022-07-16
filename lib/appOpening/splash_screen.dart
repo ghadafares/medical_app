@@ -10,16 +10,19 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: EasySplashScreen(
-        backgroundColor:backgrouColor ,
-        logo: Image.asset('assets/images/splash.png'),
-        logoSize: 300,
-        //title: Text('MedLife',style: TextStyle(color: KMainColor,fontSize: 25),),
-        navigator: Login(),
-        showLoader: true,
-        loadingText: Text("Loading...",style: TextStyle(color: Colors.white),),
-        durationInSeconds: 7,
-      ),
+      body:Container(
+          height: double.infinity,
+          child: EasySplashScreen(
+            backgroundColor:backgrouColor ,
+            logo: Image.asset('assets/images/splash.png'),
+            logoSize: 300,
+            //title: Text('MedLife',style: TextStyle(color: KMainColor,fontSize: 25),),
+            navigator: Login(),
+            showLoader: true,
+            loadingText: Text("Loading...",style: TextStyle(color: Colors.white),),
+            durationInSeconds: 7,
+          ),
+        ),
 
     );
   }

@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:user_profile_shared_preferences_example/navigationBarPages/food_page.dart';
+import 'package:user_profile_shared_preferences_example/page/edit_profile_page.dart';
 import 'package:user_profile_shared_preferences_example/page/profile_page.dart';
 import '../home/alarm_page.dart';
 import 'home_page.dart';

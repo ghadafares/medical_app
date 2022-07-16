@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:user_profile_shared_preferences_example/Bloc/AppCubit/cubit.dart';
 import 'package:user_profile_shared_preferences_example/Bloc/AppStates/states.dart';
 import 'package:user_profile_shared_preferences_example/appOpening/splash_screen.dart';
+import 'package:user_profile_shared_preferences_example/cash_helper.dart';
+import 'package:user_profile_shared_preferences_example/dio_helper/dio_helper.dart';
 import 'package:user_profile_shared_preferences_example/navigationBarPages/home_page.dart';
 import 'package:user_profile_shared_preferences_example/page/edit_profile_page.dart';
 import 'package:user_profile_shared_preferences_example/page/profile_page.dart';
@@ -22,6 +24,8 @@ import 'navigationBarPages/first_page.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await DioHelper.init();
+  await CashHelper.init();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
